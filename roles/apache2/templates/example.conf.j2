@@ -1,0 +1,8 @@
+<VirtualHost *:{{apache2_port}}>
+        ServerAdmin {{server_admin_email}}
+        DocumentRoot {{document_root_path}}
+        ServerName {{site_name1}}
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+

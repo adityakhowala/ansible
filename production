@@ -1,0 +1,21 @@
+# This is the inventory file for production hosts
+
+[banerwebserver]
+slave1
+
+[banerdbserver]
+slave2
+
+[hiwebserver]
+slave3
+
+[hidbserver]
+slave4 ansible_python_interpreter=
+
+[webservers:children]
+banerwebserver
+hiwebserver
+
+[dbservers:children]
+banerdbserver
+hidbserver

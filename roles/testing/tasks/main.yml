@@ -1,0 +1,15 @@
+---
+# tasks file for apache2
+
+- name: create file on ubuntu16
+  file:
+    path: "/tmp/uxxxx"
+    state: touch
+#  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: create file on ubuntu18
+  file:
+    path: "/tmp/u1818x"
+    state: touch
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+

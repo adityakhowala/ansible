@@ -1,0 +1,12 @@
+---
+# This is the master playbook
+
+# - name: checking ping
+#  hosts: webservers
+#  roles:
+#    - apache2
+
+- name: Deploying nagios slave 
+  hosts: '*'
+  roles:
+    - nagios_slave

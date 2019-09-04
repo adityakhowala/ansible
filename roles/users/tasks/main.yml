@@ -1,0 +1,11 @@
+---
+# tasks file for users
+
+- name: Create New Login user
+  become: yes 
+  user:
+    name: "{{ username3 }}"
+    password: "{{ username1_password }}"
+    groups: sudo
+    state: present
+    shell: /bin/sh

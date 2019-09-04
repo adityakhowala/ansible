@@ -1,0 +1,12 @@
+# This is the inventory file for production hosts
+
+[ubuntu_16]
+unslave4 ansible_user=aditya
+ubuntu16 ansible_user=aditya
+# dummy
+
+# [centos_7]
+# centos7 ansible_user=aditya
+
+[ubuntu_18]
+ubuntu18 ansible_user=aditya

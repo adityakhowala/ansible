@@ -1,0 +1,56 @@
+---
+# tasks file for apache2
+
+- name: Install apache2
+  become: yes
+  apt:
+    name: apache2
+    state: present
+
+- name: start apache2
+  become: yes
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: Check if document root folder exist
+  stat:
+    path: "{{document_root_path}}"
+  register: path_status
+
+- name: create document root directory
+  become: yes
+  file:
+    path: "{{document_root_path}}"
+    state: directory
+    mode: 0755
+    owner: ansible
+    group: ansible
+  when:
+    path_status.stat.exists == false
+
+- name: Copy index file
+  become: yes
+  copy:
+    src: index.html
+    dest: "{{document_root_path}}/index.html"
+    mode: 0755
+    owner: ansible
+    group: ansible
+
+- name: Copy VirtualHost Configuration File
+  become: yes
+  template:
+    src: example.conf.j2
+    dest: /etc/apache2/sites-available/example.conf
+    mode: 0755
+
+- name: Creating Symbolic link
+  become: yes
+  file:
+    src: /etc/apache2/sites-available/example.conf
+    dest: /etc/apache2/sites-enabled/example.conf
+    state: link
+  notify:
+    - restart apache2 

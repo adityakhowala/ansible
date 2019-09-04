@@ -1,0 +1,7 @@
+---
+# vars file for nginx
+
+apache2_port: 1234
+server_admin_email: ansible@gmail.com
+document_root_path: /var/www/example
+site_name1: www.example.com

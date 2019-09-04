@@ -1,0 +1,18 @@
+---
+# tasks file for copyfile
+
+- name: Install nrpe on ubuntu 16.04
+  become: yes
+  script: /etc/ansible/scripts/nrpe_installation_u16.sh
+  notify:
+    - restart nrpe service
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: Install nrpe on ubuntu 18.04
+  become: yes
+  script: /etc/ansible/scripts/nrpe_installation_u18.sh
+  notify:
+    - restart nrpe service
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
+
